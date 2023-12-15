@@ -114,7 +114,7 @@ form.addEventListener("submit", (e) => {
 
   dim = e.target.dimensions.value;
   if (
-    dim > threshold &&
+    dim >= threshold &&
     confirm(
       "Are you sure? \nDimensions more than 7 may greatly affect your performance!"
     )
@@ -122,7 +122,7 @@ form.addEventListener("submit", (e) => {
     const elements = buildElements(width, height, dim);
 
     render(dim, elements);
-  } else if (dim <= threshold) {
+  } else if (dim < threshold) {
     const elements = buildElements(width, height, dim);
 
     render(dim, elements);
