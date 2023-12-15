@@ -127,6 +127,7 @@ form.addEventListener("submit", (e) => {
 
     render(dim, elements);
   }
+  download.classList.remove("hidden");
 });
 
 size.addEventListener("change", (e) => {
@@ -160,9 +161,13 @@ speedDefault.addEventListener("click", () => {
   render(dim, elements);
 });
 
-download.addEventListener("click", () => {
+download.addEventListener("click", (e) => {
   console.log(svgWrapper.innerHTML);
-  const file = new File([svgWrapper.innerHTML.replace(/,/g, "")], "det.svg");
+  if (!svgWrapper.innerHTML) {
+    e.preventDefault();
+    return;
+  }
+  const file = new File([svgWrapper.innerHTML], "det.svg");
   download.href = URL.createObjectURL(file);
   download.download = "dev.svg";
 });

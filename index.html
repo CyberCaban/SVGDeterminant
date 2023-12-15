@@ -3,12 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
     <script src="./script.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <title>SVGDeterminant</title>
   </head>
-  <body class="flex flex-col items-center mt-4">
+  <body class="flex flex-col items-center m-0 mt-4">
     <form class="flex flex-col sm:flex-row">
       <div class="flex flex-col mx-2">
         <p class="m-0">Matrix dimensions</p>
@@ -19,7 +18,11 @@
           name="dimensions"
           value="3"
         />
-        <button>build</button>
+        <button
+          class="text-gray-50 bg-gray-600 rounded-md w-auto self-center px-2 m-0.5"
+        >
+          build
+        </button>
       </div>
       <div class="flex flex-col mx-2 pointer-none">
         <p class="cursor-default">Square size</p>
@@ -35,11 +38,15 @@
           min="0.00001"
           step="0.00001"
         />
-        <button class="speed-default">Default</button>
+        <button
+          class="speed-default text-gray-50 bg-gray-600 rounded-md w-auto self-center px-2 m-0.5"
+        >
+          Default
+        </button>
       </div>
     </form>
 
-    <div class="svgWrapper p-2 border-zinc-500 rounded-md"></div>
-    <a href="" class="download" disabled>Get Svg</a>
+    <div class="svgWrapper p-2 border-zinc-500 rounded-md m-4"></div>
+    <a href="" class="download hover:text-blue-600 underline hidden">Get Svg</a>
   </body>
 </html>
