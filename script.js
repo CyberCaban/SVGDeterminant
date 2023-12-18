@@ -19,17 +19,26 @@ function factorial(n) {
   return result;
 }
 
-function perm(arr) {
-  if (arr.length > 1) {
-    var beg = arr[0];
-    var arr1 = perm(arr.slice(1));
-    var arr2 = [];
-    var l = arr1[0].length;
-    for (var i = 0; i < arr1.length; i++)
-      for (var j = 0; j <= l; j++)
-        arr2.push(arr1[i].slice(0, j).concat(beg, arr1[i].slice(j)));
-    return arr2;
-  } else return [arr];
+function permutator(inputArr) {
+  var results = [];
+
+  function permute(arr, memo) {
+    var cur,
+      memo = memo || [];
+
+    for (var i = 0; i < arr.length; i++) {
+      cur = arr.splice(i, 1);
+      if (arr.length === 0) {
+        results.push(memo.concat(cur));
+      }
+      permute(arr.slice(), memo.concat(cur));
+      arr.splice(i, 0, cur[0]);
+    }
+
+    return results;
+  }
+
+  return permute(inputArr);
 }
 
 function transposeMatrix(matrix) {
@@ -42,7 +51,7 @@ function generateAnimationValues(width, n) {
     elements.push(String(i));
   }
 
-  const permArray = perm(elements);
+  const permArray = permutator(elements);
   const transposed = transposeMatrix(permArray.sort());
 
   const res = transposed.map((mults) =>
