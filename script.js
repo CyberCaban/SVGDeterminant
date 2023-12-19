@@ -75,11 +75,11 @@ function buildElements(width, height, dim) {
   let animationFramesFill = animationFramesX[0].split(";");
   for (let i = 0; i < animationFramesFill.length; i += 2) {
     if (i % 4) {
-      animationFramesFill[i] = "red";
-      animationFramesFill[i + 1] = "red";
-    } else {
       animationFramesFill[i] = "blue";
       animationFramesFill[i + 1] = "blue";
+    } else {
+      animationFramesFill[i] = "red";
+      animationFramesFill[i + 1] = "red";
     }
   }
 
